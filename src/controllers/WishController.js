@@ -1,12 +1,13 @@
-const WishService = require('../services/WishService');
+const WishService = require("../services/WishService");
 
 const addWish = async (req, res, next) => {
+  console.log("🚀 ~ file: WishController.js:4 ~ addWish ~ req:", req.body);
   try {
-    const { name, wish } = req.body;
-    if (!name || !wish) {
+    const { name, content } = req.body;
+    if (!name || !content) {
       return res.status(200).json({
-        status: 'ERR',
-        message: 'The input is required'
+        status: "ERR",
+        message: "The input is required"
       });
     }
     const r = await WishService.addWish(req.body);
